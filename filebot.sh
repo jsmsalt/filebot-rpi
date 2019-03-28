@@ -17,7 +17,7 @@ filebot -script fn:amc  \
 	--output "$OUTPUT"  \
 	--action move  \
 	--conflict skip  \
-	--lang "esp" \
+	--lang "spa" \
 	-get-subtitles \
 	-non-strict  \
 	--log-file /config/logs/amc.log \
