@@ -24,9 +24,7 @@ RUN echo "********** [INSTALLING DEPENDENCIES] **********" && \
     rm filebot.portable.launcher.l4j.ini && \
     rm filebot.cmd && \
     rm update-filebot.sh && \
-    rm -rf /lib/x86_64 && \
-    rm -rf /lib/i686 && \
-    rm -rf /lib/aarch64
+    rm -rf /opt/share/filebot/lib/x86_64/* /opt/share/filebot/lib/i686/* /opt/share/filebot/lib/aarch64/*
 
 # Set volumes.
 VOLUME /downloads /media /config
