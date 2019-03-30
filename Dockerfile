@@ -2,6 +2,17 @@ FROM jsmsalt/java-rpi:latest
 
 MAINTAINER Jose Morales <jsmsalt@gmail.com>
 
+# Environment variables.
+ENV TZ=UTC
+
+# System config
+RUN echo "********** [SET LOCALTIME AND TIMEZONE] **********" \
+	&& apk add --update --no-cache \
+		tzdata \
+	&& cp "/usr/share/zoneinfo/$TZ" /etc/localtime \
+	&& echo "$TZ" >  /etc/timezone \
+	&& apk del tzdata
+
 # Full installation.
 RUN echo "********** [INSTALLING DEPENDENCIES] **********" \
 	&& apk add --update --no-cache --virtual build-dependencies \
