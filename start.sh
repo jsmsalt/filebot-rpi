@@ -17,9 +17,7 @@ if [ -f /config/osdb.txt ]; then
 	cat /config/osdb.txt | filebot -script fn:configure >> /config/logs/configure.log
 fi
 
-while true; do
-   inotifywait -q --timefmt '%F %T' --format "[%T][%e]: %f" -e create,moved_to -r /downloads -o /config/logs/watch.log 
-
+run_filebot() {
    if [ -f /filebot.sh ]; then
       sh /filebot.sh
    fi
@@ -29,4 +27,11 @@ while true; do
    fi
 
    sleep 1
+}
+
+run_filebot
+
+while true; do
+   inotifywait -q --timefmt '%F %T' --format "[%T][%e]: %f" -e create,moved_to -r /downloads -o /config/logs/watch.log 
+   run_filebot
 done

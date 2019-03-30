@@ -30,7 +30,6 @@ RUN echo "********** [INSTALLING DEPENDENCIES] **********" \
 	&& rm filebot.cmd \
 	&& rm update-filebot.sh \
 	&& rm -rf \
-		/var/lib/apt/lists/* \
 		/tmp/* \
 		/var/tmp/* \
 		/var/cache/apk/* \
