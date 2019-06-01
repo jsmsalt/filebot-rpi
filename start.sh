@@ -17,12 +17,24 @@ if [ -f /config/osdb.txt ]; then
 	cat /config/osdb.txt | filebot -script fn:configure >> /config/logs/configure.log
 fi
 
+if [ -f chmod u+x /config/filebot.sh ]; then
+	chmod u+x /config/filebot.sh
+fi
+
+if [ -f chmod u+x /config/postprocess.sh ]; then
+	chmod u+x /config/postprocess.sh
+fi
+
 run_filebot() {
-   if [ -f /filebot.sh ]; then
+   if [ -f /config/filebot.sh ]; then
+      sh /config/filebot.sh
+   else
       sh /filebot.sh
    fi
 
-   if [ -f /postprocess.sh ]; then
+   if [ -f /config/postprocess.sh ]; then
+      sh /config/postprocess.sh
+   else
       sh /postprocess.sh
    fi
 
